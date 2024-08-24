@@ -82,8 +82,25 @@ class ProductDetails extends StatelessWidget {
             children: [
               Image.network(images!,fit: BoxFit.cover,),
               const SizedBox(height: 15,),
-              Text(title!,
-                     style: MyTexts.titleText,),
+              Row(
+                children: [
+                  Text(title!,
+                         style: MyTexts.titleText,),
+                  MaterialButton(
+                    onPressed: (){
+                      wishlistController.addItem(p!);
+                    },
+                    minWidth: MediaQuery.of(context).size.width*0.10,
+                    child: Icon(
+                      // detailpagecontroller.isFavorite ?
+                      wishlistController.wishitems.contains(p) ?
+                      Icons.favorite : Icons.favorite_border,
+                      color:
+                      wishlistController.wishitems.contains(p) ?
+                      Colors.red : null,
+                    ),),
+                ],
+              ),
               const SizedBox(height: 10,),
               Text(description!,style: MyTexts.bodyText,),
               const SizedBox(height: 8,),
@@ -103,30 +120,10 @@ class ProductDetails extends StatelessWidget {
               Text("Warranty: $warrantyInformation",style: MyTexts.bodyText),
               const SizedBox(height: 8,),
               Text("Return Policy: $returnPolicy",style: MyTexts.bodyText),
-              const SizedBox(height: 8,),
+              const SizedBox(height: 30,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  MaterialButton(
-                           onPressed: (){
-                            // detailpagecontroller.toggleFavorite();
-                            // cartController.toggleFavorite();
-                             wishlistController.addItem(p!);
-                           },
-                    minWidth: MediaQuery.of(context).size.width*0.45,
-                    shape: const Border.fromBorderSide(BorderSide(width: 2,color: Colors.grey)),
-                   // color: detailpagecontroller.isFavorite ? Colors.red : null ,
-                  child: Icon(
-                   // detailpagecontroller.isFavorite ?
-                    wishlistController.wishitems.contains(p) ?
-                    Icons.favorite : Icons.favorite_border,
-                    color:
-                    // detailpagecontroller.isFavorite ?
-                    // cartController.isFavorite?
-                     wishlistController.wishitems.contains(p) ?
-                     Colors.red : null,
-                  ),),
-                 // Checkbox(value: value, onChanged: onChanged)
                   MaterialButton(
                       onPressed: (){
                         //count=0;
@@ -134,13 +131,20 @@ class ProductDetails extends StatelessWidget {
                           cartController.addItem(p!);
                           print(cartController.items);
                         }
-                       // Provider.of<CartController>(context,listen: false).incrementCount(count!);
                       },
+                    shape: const Border.fromBorderSide(BorderSide(width: 2,color: Colors.grey)),
+                    minWidth: MediaQuery.of(context).size.width*0.45,
+                    child:  Text(cartController.items.contains(p) ? "Added To Cart" : "Add to Cart"),),
+
+                  MaterialButton(
+                      onPressed: (){},
                     color: Colors.yellow[800],
                     minWidth: MediaQuery.of(context).size.width*0.45,
-                    child:  Text(cartController.items.contains(p) ? "Added To Cart" : "Add to Cart"),)
+                    child: Text("Buy Now"),
+                  )
                 ],
-              )
+              ),
+              SizedBox(height: 75,)
             ],
           ),
         ),

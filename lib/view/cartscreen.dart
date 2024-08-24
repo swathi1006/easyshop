@@ -51,19 +51,6 @@ class CartScreen extends StatelessWidget {
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          // IconButton(onPressed: (){
-                          //   Provider.of<CartController>(context,listen: false).decrementCount(item.count!);
-                          // },
-                          //     icon: Icon(Icons.remove)),
-
-                         // Text(
-                         //    "${item.count}",style: TextStyle(fontSize: 20),),
-
-                          // IconButton(onPressed: (){
-                          //   Provider.of<CartController>(context,listen: false).incrementCount(item.count!);
-                          // },
-                          //     icon: Icon(Icons.add)),
-                          // SizedBox(width: 15,),
                           IconButton(onPressed: (){
                             Provider.of<CartController>(context,listen: false).removeItem(item);
                           },
@@ -74,6 +61,7 @@ class CartScreen extends StatelessWidget {
                   });
                  
             }),
+
           ),
          // SizedBox(height: 30,),
           Text("Total Price :  \$ $totalAmount",style: TextStyle(fontWeight: FontWeight.bold),),
@@ -83,7 +71,7 @@ class CartScreen extends StatelessWidget {
             minWidth: 130,
             child: Text("Pay Now",style: TextStyle(color: Colors.white,fontSize: 15),),
           ),
-          SizedBox(height: 100,),
+          SizedBox(height: 60,),
         ],
       ),
     );

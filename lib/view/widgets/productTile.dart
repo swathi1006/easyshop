@@ -2,6 +2,9 @@ import 'package:easyshop/view/widgets/productDetailsView.dart';
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easyshop/model/productModel.dart';
+import 'package:provider/provider.dart';
+
+import '../../controller/cartController.dart';
 
 
 class ProductTileAPI extends StatelessWidget {
@@ -38,6 +41,7 @@ class ProductTileAPI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CartController cartController = Provider.of<CartController>(context);
     return InkWell(
       onTap: (){
         Navigator.push(context,
@@ -71,6 +75,19 @@ class ProductTileAPI extends StatelessWidget {
                   Text(category!),
                   SizedBox(height: 5,),
                   Text("\$$price"),
+                  SizedBox(height: 5,),
+                  MaterialButton(
+                    onPressed: (){
+                      //count=0;
+                      if(cartController.items.contains(title) != true){
+                        cartController.addItem(p!);
+                        print(cartController.items);
+                      }
+                    },
+                    //shape: const Border.fromBorderSide(BorderSide(width: 2,color: Colors.grey)),
+                    minWidth: 100,
+                    color: Colors.deepPurpleAccent[100],
+                    child:  Text(cartController.items.contains(p) ? "Added To Cart" : "Add to Cart"),),
                 ],
               ),
             )
