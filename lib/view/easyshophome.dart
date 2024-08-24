@@ -36,7 +36,7 @@ class HomeProductList extends StatelessWidget {
               child: GridView.builder(
                   itemCount: provider.allProducts.products?.length??0,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 0.8,
+                      childAspectRatio: 0.7,
                       mainAxisSpacing: 0.2,
                       crossAxisCount: 2),
                   itemBuilder: (context,index){

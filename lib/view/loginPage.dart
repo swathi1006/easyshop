@@ -37,7 +37,8 @@ class _LoginPageState extends State<LoginPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset("assets/images/easyshop.png",height: 150,),
+              SizedBox(height: 30,),
+              Image.asset("assets/images/easyshop.png",height: 120,),
               const SizedBox(height: 30), // Adding space at the top
               Text("Easy Shop Login ",
                 style: GoogleFonts.archivoBlack(
