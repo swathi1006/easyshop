@@ -7,6 +7,7 @@ A new Flutter project.
 This project is a starting point for a Flutter application.
 
 
+![easyshop.png](..%2F..%2F..%2FUsers%2Fjijit%2FDownloads%2Feasyshop.png)
 
 
 A few resources to get you started if this is your first Flutter project:
